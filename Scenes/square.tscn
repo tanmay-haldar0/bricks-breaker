@@ -9,6 +9,7 @@ size = Vector3(45, 45, 1)
 size = Vector2(44, 44)
 
 [node name="Square" instance=ExtResource("1_rjehp")]
+life = 6
 
 [node name="MeshInstance2D" parent="." index="0"]
 mesh = SubResource("BoxMesh_fgsgj")

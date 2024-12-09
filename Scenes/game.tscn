@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dra7ucyfbw5r6"]
+[gd_scene load_steps=10 format=3 uid="uid://dra7ucyfbw5r6"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_ij7je"]
 [ext_resource type="Texture2D" uid="uid://bba68n8pv4fj7" path="res://Assets/full.jpg" id="1_ll06v"]
@@ -10,12 +10,20 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jpcxn"]
 size = Vector2(770, 85)
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_1coqo"]
+scenes/2/scene = ExtResource("3_48mhl")
+scenes/3/scene = ExtResource("2_ew8sy")
+
+[sub_resource type="TileSet" id="TileSet_sq0t7"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetScenesCollectionSource_1coqo")
+
 [node name="game" type="Node2D"]
 script = ExtResource("1_ij7je")
 
 [node name="Full" type="Sprite2D" parent="."]
 modulate = Color(0.424931, 0.424931, 0.424931, 1)
-position = Vector2(284, 659)
+position = Vector2(357, 668)
 scale = Vector2(1.93421, 1.74259)
 texture = ExtResource("1_ll06v")
 
@@ -36,27 +44,8 @@ offset_top = 1284.0
 offset_right = 661.0
 offset_bottom = 1301.0
 
-[node name="Square" parent="." instance=ExtResource("2_ew8sy")]
-position = Vector2(88, 94)
-
-[node name="circle" parent="." instance=ExtResource("3_48mhl")]
-position = Vector2(159, 94)
-
-[node name="Square2" parent="." instance=ExtResource("2_ew8sy")]
-position = Vector2(231, 92)
-
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
-
-[node name="circle2" parent="." instance=ExtResource("3_48mhl")]
-position = Vector2(514, 753)
-life = 8
-
-[node name="Square3" parent="." instance=ExtResource("2_ew8sy")]
-position = Vector2(417, 731)
-
-[node name="circle3" parent="." instance=ExtResource("3_48mhl")]
-position = Vector2(321, 742)
 
 [node name="boost_speed" type="Timer" parent="."]
 wait_time = 5.0
@@ -66,5 +55,10 @@ position = Vector2(290, 1262)
 scale = Vector2(0.27643, 0.293982)
 texture = ExtResource("5_5aphp")
 script = ExtResource("6_abhme")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_sq0t7")
+format = 2
+layer_0/tile_data = PackedInt32Array(65536, 0, 196608, 65538, 0, 196608, 262147, 0, 196608, 196609, 0, 196608, 196613, 0, 196608, 196614, 0, 196608, 196615, 0, 196608, 131074, 0, 131072, 196611, 0, 131072, 131076, 0, 131072, 65541, 0, 131072, 65543, 0, 131072, 131078, 0, 131072, 196612, 0, 196608, 262148, 0, 196608, 131077, 0, 196608, 524290, 0, 196608, 458754, 0, 131072, 393218, 0, 131072, 393219, 0, 131072, 393220, 0, 196608, 458756, 0, 196608, 524291, 0, 196608, 524292, 0, 131072, 458755, 0, 196608, 327683, 0, 196608, 327685, 0, 196608, 393222, 0, 196608, 458759, 0, 196608, 524293, 0, 131072, 458757, 0, 131072, 458758, 0, 131072, 524294, 0, 196608, 720898, 0, 131072, 720899, 0, 131072, 720900, 0, 131072, 655363, 0, 196608, 655364, 0, 196608, 720901, 0, 196608, 786437, 0, 196608, 786436, 0, 196608, 786435, 0, 196608, 655362, 0, 196608, 589828, 0, 196608, 589827, 0, 196608, 327680, 0, 196608, 393216, 0, 196608, 458752, 0, 196608, 524288, 0, 196608, 589824, 0, 196608, 327688, 0, 196608, 393224, 0, 196608, 458760, 0, 196608, 524296, 0, 196608, 458753, 0, 131072, 393217, 0, 131072)
 
 [connection signal="timeout" from="boost_speed" to="." method="_on_boost_speed_timeout"]

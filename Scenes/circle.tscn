@@ -10,6 +10,7 @@ height = 45.0
 radius = 23.0217
 
 [node name="circle" instance=ExtResource("1_e38j8")]
+life = 8
 
 [node name="MeshInstance2D" parent="." index="0"]
 mesh = SubResource("SphereMesh_b21vs")
