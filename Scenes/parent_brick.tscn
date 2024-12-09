@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3haed0mic1eo"]
+
+[ext_resource type="Script" path="res://Scripts/parent_brick.gd" id="1_c5b7s"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_7hw85"]
+size = Vector2(45, 45)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rtw1m"]
+size = Vector2(44, 44)
+
+[node name="Parent_brick" type="StaticBody2D" groups=["brick"]]
+script = ExtResource("1_c5b7s")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+mesh = SubResource("QuadMesh_7hw85")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rtw1m")
+one_way_collision_margin = 0.0
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.652864, 0.652864, 0.652864, 1)
+theme_override_font_sizes/font_size = 20
+text = "20"

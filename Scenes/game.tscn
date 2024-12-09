@@ -1,17 +1,56 @@
-[gd_scene load_steps=2 format=3 uid="uid://dra7ucyfbw5r6"]
+[gd_scene load_steps=6 format=3 uid="uid://dra7ucyfbw5r6"]
+
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_ij7je"]
+[ext_resource type="Texture2D" uid="uid://bba68n8pv4fj7" path="res://Assets/full.jpg" id="1_ll06v"]
+[ext_resource type="PackedScene" uid="uid://b35vfjxmuy26b" path="res://Scenes/square.tscn" id="2_ew8sy"]
+[ext_resource type="PackedScene" uid="uid://ddma2r2ctgjao" path="res://Scenes/circle.tscn" id="3_48mhl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jpcxn"]
 size = Vector2(770, 85)
 
 [node name="game" type="Node2D"]
+script = ExtResource("1_ij7je")
+
+[node name="Full" type="Sprite2D" parent="."]
+modulate = Color(0.424931, 0.424931, 0.424931, 1)
+position = Vector2(324, 444)
+scale = Vector2(1.93421, 1.74259)
+texture = ExtResource("1_ll06v")
 
 [node name="wall" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="wall"]
-polygon = PackedVector2Array(-57, -42, -57, 1276, -1, 1272, -1, 0, 717, 4, 717, 1280, 777, 1276, 766, -49)
+polygon = PackedVector2Array(-60, -54, -60, 1062, -4, 1058, -1, 0, 584, 6, 584, 1062, 636, 1070, 644, -50)
 
-[node name="floor" type="StaticBody2D" parent="."]
+[node name="floor" type="StaticBody2D" parent="." groups=["bottom"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
-position = Vector2(362, 1282)
+position = Vector2(278, 1109)
 shape = SubResource("RectangleShape2D_jpcxn")
+
+[node name="Square" parent="." instance=ExtResource("2_ew8sy")]
+position = Vector2(88, 94)
+
+[node name="circle" parent="." instance=ExtResource("3_48mhl")]
+position = Vector2(159, 94)
+
+[node name="Square2" parent="." instance=ExtResource("2_ew8sy")]
+position = Vector2(231, 92)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="circle2" parent="." instance=ExtResource("3_48mhl")]
+position = Vector2(514, 753)
+life = 8
+
+[node name="Square3" parent="." instance=ExtResource("2_ew8sy")]
+position = Vector2(417, 731)
+
+[node name="circle3" parent="." instance=ExtResource("3_48mhl")]
+position = Vector2(321, 742)
+
+[node name="boost_speed" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="boost_speed" to="." method="_on_boost_speed_timeout"]

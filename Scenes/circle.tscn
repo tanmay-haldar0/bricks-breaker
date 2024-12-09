@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddma2r2ctgjao"]
+
+[ext_resource type="PackedScene" uid="uid://b3haed0mic1eo" path="res://Scenes/parent_brick.tscn" id="1_e38j8"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_b21vs"]
+radius = 22.5
+height = 45.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bu66j"]
+radius = 23.0217
+
+[node name="circle" instance=ExtResource("1_e38j8")]
+
+[node name="MeshInstance2D" parent="." index="0"]
+mesh = SubResource("SphereMesh_b21vs")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_bu66j")
