@@ -20,7 +20,7 @@ func _integrate_forces(state):
 	if state.linear_velocity.length() < speed:
 		state.linear_velocity = state.linear_velocity.normalized()*speed
 	var ball_safe_zone = self.position
-	if ball_safe_zone.x < -10 or ball_safe_zone.x > 600 or ball_safe_zone.y < -10 or ball_safe_zone.y > 1080 :
+	if ball_safe_zone.x < -10 or ball_safe_zone.x > 600 or ball_safe_zone.y < -10 or ball_safe_zone.y > 1500 :
 		get_parent().remove_ball()
 		queue_free()
 

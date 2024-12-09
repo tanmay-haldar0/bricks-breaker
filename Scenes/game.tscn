@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dra7ucyfbw5r6"]
+[gd_scene load_steps=8 format=3 uid="uid://dra7ucyfbw5r6"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_ij7je"]
 [ext_resource type="Texture2D" uid="uid://bba68n8pv4fj7" path="res://Assets/full.jpg" id="1_ll06v"]
 [ext_resource type="PackedScene" uid="uid://b35vfjxmuy26b" path="res://Scenes/square.tscn" id="2_ew8sy"]
 [ext_resource type="PackedScene" uid="uid://ddma2r2ctgjao" path="res://Scenes/circle.tscn" id="3_48mhl"]
+[ext_resource type="Texture2D" uid="uid://dtu8btwxed5ly" path="res://Assets/cannon.png" id="5_5aphp"]
+[ext_resource type="Script" path="res://Scripts/cannon.gd" id="6_abhme"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jpcxn"]
 size = Vector2(770, 85)
@@ -13,20 +15,26 @@ script = ExtResource("1_ij7je")
 
 [node name="Full" type="Sprite2D" parent="."]
 modulate = Color(0.424931, 0.424931, 0.424931, 1)
-position = Vector2(324, 444)
+position = Vector2(284, 659)
 scale = Vector2(1.93421, 1.74259)
 texture = ExtResource("1_ll06v")
 
 [node name="wall" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="wall"]
-polygon = PackedVector2Array(-60, -54, -60, 1062, -4, 1058, -1, 0, 584, 6, 584, 1062, 636, 1070, 644, -50)
+polygon = PackedVector2Array(-60, -54, -52, 1283, -4, 1287, -1, 0, 584, 6, 581, 1285, 628, 1283, 644, -50)
 
 [node name="floor" type="StaticBody2D" parent="." groups=["bottom"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
-position = Vector2(278, 1109)
+position = Vector2(278, 1335)
 shape = SubResource("RectangleShape2D_jpcxn")
+
+[node name="TextureRect" type="ColorRect" parent="floor"]
+offset_left = -110.0
+offset_top = 1284.0
+offset_right = 661.0
+offset_bottom = 1301.0
 
 [node name="Square" parent="." instance=ExtResource("2_ew8sy")]
 position = Vector2(88, 94)
@@ -38,7 +46,7 @@ position = Vector2(159, 94)
 position = Vector2(231, 92)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.1
 
 [node name="circle2" parent="." instance=ExtResource("3_48mhl")]
 position = Vector2(514, 753)
@@ -52,5 +60,11 @@ position = Vector2(321, 742)
 
 [node name="boost_speed" type="Timer" parent="."]
 wait_time = 5.0
+
+[node name="Cannon" type="Sprite2D" parent="."]
+position = Vector2(290, 1262)
+scale = Vector2(0.27643, 0.293982)
+texture = ExtResource("5_5aphp")
+script = ExtResource("6_abhme")
 
 [connection signal="timeout" from="boost_speed" to="." method="_on_boost_speed_timeout"]

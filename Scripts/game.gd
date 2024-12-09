@@ -3,7 +3,7 @@ extends Node2D
 var balls_available = 10 + level
 var canShoot = true
 var ball_count:int = 0
-var canon_location = Vector2(200,900)
+var canon_location = Vector2(290,1265)
 @onready var boost_speed: Timer = $boost_speed
 
 var new_shoot_direction = Vector2()
