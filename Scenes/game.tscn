@@ -27,7 +27,7 @@ position = Vector2(281, 508.501)
 scale = Vector2(1.93421, 1.49167)
 texture = ExtResource("1_ll06v")
 
-[node name="wall" type="StaticBody2D" parent="."]
+[node name="wall" type="StaticBody2D" parent="." groups=["wall"]]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="wall"]
 polygon = PackedVector2Array(-129, -105, -129, 1302, 0, 1299, -1, 0, 574, -2, 579, 1290, 689, 1281, 697, -105)
