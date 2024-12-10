@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/cannon.gd" id="6_abhme"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jpcxn"]
-size = Vector2(770, 85)
+size = Vector2(838, 85)
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_1coqo"]
 scenes/2/scene = ExtResource("3_48mhl")
@@ -23,26 +23,27 @@ script = ExtResource("1_ij7je")
 
 [node name="Full" type="Sprite2D" parent="."]
 modulate = Color(0.424931, 0.424931, 0.424931, 1)
-position = Vector2(357, 668)
-scale = Vector2(1.93421, 1.74259)
+position = Vector2(281, 508.501)
+scale = Vector2(1.93421, 1.49167)
 texture = ExtResource("1_ll06v")
 
 [node name="wall" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="wall"]
-polygon = PackedVector2Array(-60, -54, -52, 1283, -4, 1287, -1, 0, 584, 6, 581, 1285, 628, 1283, 644, -50)
+polygon = PackedVector2Array(-129, -105, -129, 1302, 0, 1299, -1, 0, 574, -2, 579, 1290, 689, 1281, 697, -105)
 
 [node name="floor" type="StaticBody2D" parent="." groups=["bottom"]]
+position = Vector2(0, 61)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
-position = Vector2(278, 1335)
+position = Vector2(312, 1197.58)
 shape = SubResource("RectangleShape2D_jpcxn")
 
 [node name="TextureRect" type="ColorRect" parent="floor"]
 offset_left = -110.0
-offset_top = 1284.0
-offset_right = 661.0
-offset_bottom = 1301.0
+offset_top = 1146.69
+offset_right = 720.0
+offset_bottom = 1163.69
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
@@ -51,14 +52,14 @@ wait_time = 0.1
 wait_time = 5.0
 
 [node name="Cannon" type="Sprite2D" parent="."]
-position = Vector2(290, 1262)
-scale = Vector2(0.27643, 0.293982)
+position = Vector2(295, 1100.59)
+scale = Vector2(0.4, 0.427)
 texture = ExtResource("5_5aphp")
 script = ExtResource("6_abhme")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_sq0t7")
 format = 2
-layer_0/tile_data = PackedInt32Array(65536, 0, 196608, 65538, 0, 196608, 262147, 0, 196608, 196609, 0, 196608, 196613, 0, 196608, 196614, 0, 196608, 196615, 0, 196608, 131074, 0, 131072, 196611, 0, 131072, 131076, 0, 131072, 65541, 0, 131072, 65543, 0, 131072, 131078, 0, 131072, 196612, 0, 196608, 262148, 0, 196608, 131077, 0, 196608, 524290, 0, 196608, 458754, 0, 131072, 393218, 0, 131072, 393219, 0, 131072, 393220, 0, 196608, 458756, 0, 196608, 524291, 0, 196608, 524292, 0, 131072, 458755, 0, 196608, 327683, 0, 196608, 327685, 0, 196608, 393222, 0, 196608, 458759, 0, 196608, 524293, 0, 131072, 458757, 0, 131072, 458758, 0, 131072, 524294, 0, 196608, 720898, 0, 131072, 720899, 0, 131072, 720900, 0, 131072, 655363, 0, 196608, 655364, 0, 196608, 720901, 0, 196608, 786437, 0, 196608, 786436, 0, 196608, 786435, 0, 196608, 655362, 0, 196608, 589828, 0, 196608, 589827, 0, 196608, 327680, 0, 196608, 393216, 0, 196608, 458752, 0, 196608, 524288, 0, 196608, 589824, 0, 196608, 327688, 0, 196608, 393224, 0, 196608, 458760, 0, 196608, 524296, 0, 196608, 458753, 0, 131072, 393217, 0, 131072)
+layer_0/tile_data = PackedInt32Array(65536, 0, 196608, 65538, 0, 196608, 262147, 0, 196608, 196609, 0, 196608, 196613, 0, 196608, 196614, 0, 196608, 196615, 0, 196608, 131074, 0, 131072, 196611, 0, 131072, 131076, 0, 131072, 65541, 0, 131072, 65543, 0, 131072, 131078, 0, 131072, 196612, 0, 196608, 262148, 0, 196608, 131077, 0, 196608, 524290, 0, 196608, 458754, 0, 131072, 393218, 0, 131072, 393219, 0, 131072, 393220, 0, 196608, 458756, 0, 196608, 524291, 0, 196608, 524292, 0, 131072, 458755, 0, 196608, 327683, 0, 196608, 327685, 0, 196608, 393222, 0, 196608, 458759, 0, 196608, 524293, 0, 131072, 458757, 0, 131072, 458758, 0, 131072, 524294, 0, 196608, 589828, 0, 196608, 589827, 0, 196608, 327680, 0, 196608, 393216, 0, 196608, 458752, 0, 196608, 524288, 0, 196608, 589824, 0, 196608, 327688, 0, 196608, 393224, 0, 196608, 458760, 0, 196608, 524296, 0, 196608, 458753, 0, 131072, 393217, 0, 131072, 262149, 0, 131072, 262150, 0, 131072, 393223, 0, 131072)
 
 [connection signal="timeout" from="boost_speed" to="." method="_on_boost_speed_timeout"]

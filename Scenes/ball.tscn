@@ -3,14 +3,15 @@
 [ext_resource type="Script" path="res://Scripts/ball.gd" id="1_pntxp"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j66hs"]
-bounce = 1.0
+rough = true
+bounce = 0.9
 
 [sub_resource type="SphereMesh" id="SphereMesh_ajool"]
-radius = 8.0
-height = 16.0
+radius = 12.0
+height = 24.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mpuw1"]
-radius = 8.0
+radius = 12.0
 
 [node name="ball" type="RigidBody2D" groups=["ball"]]
 collision_layer = 2
