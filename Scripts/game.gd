@@ -7,10 +7,13 @@ var ball_count:int = 0
 var canon_location = Vector2(296, 1190)
 @onready var boost_speed: Timer = $boost_speed
 @onready var cannon: Sprite2D = $Cannon
+@onready var bricks: TileMap = $TileMap
 
 var new_shoot_direction = Vector2()
 @onready var tilemap: TileMap = $TileMap
 @onready var timer: Timer = $Timer
+var block = Vector2(0,105)
+var isShooted:bool = false
 
 var balls = preload("res://Scenes/ball.tscn")
 
@@ -28,9 +31,12 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_released("shoot") and canShoot:
 		shoot_balls(get_global_mouse_position())
-
+	
+	bricks_pull_down()
+	
 func shoot_balls(shoot_direction):
 	reset_round()
+	first_ball_triggered = false
 	new_shoot_direction = shoot_direction - canon_location
 	canShoot = false
 	boost_speed.start()
@@ -41,6 +47,9 @@ func shoot_balls(shoot_direction):
 		add_child(new_balls)
 		ball_count += 1
 		await get_tree().create_timer(0.05).timeout  # Tiny delay to ensure correct initialization
+	
+	
+	isShooted = true
 
 func remove_ball():
 	ball_count -= 1
@@ -60,6 +69,7 @@ func check_all_bricks_destroyed() -> bool:
 
 func pull_down_all_balls():
 	for ball in get_tree().get_nodes_in_group("ball"):
+		cannon.position = canon_location
 		var tween = get_tree().create_tween()
 		tween.tween_property(ball, "position", Vector2(296, 1190), 0.29)\
 			 .set_trans(Tween.TRANS_CUBIC)\
@@ -82,3 +92,9 @@ func reset_round():
 		 # Reset to the default position
 	print("Cannon position reset to: ", canon_location)  # Debugging statement
 	canShoot = true  # Allow shooting again
+
+
+func bricks_pull_down():
+	if canShoot and isShooted :
+		isShooted = false
+		bricks.position += block

@@ -37,9 +37,12 @@ func _process(delta):
 		get_parent().remove_ball()  # Remove the ball if out of bounds
 	
 	# Ensure the ball maintains constant speed
+	
+
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if linear_velocity.length() < speed:
 		linear_velocity = linear_velocity.normalized() * speed
-
+		
 # Function to return the ball to the cannon
 func return_to_cannon():
 	if not is_returning:
@@ -61,7 +64,7 @@ func _on_tween_completed(tween):
 func _on_body_entered(body):
 	if body.is_in_group("brick"):
 		body.take_life()  # Call a method on the brick to take a life
-		reflect_velocity_with_limit((position - body.position).normalized())  # Reflect the ball's velocity
+		#reflect_velocity_with_limit((position - body.position).normalized())  # Reflect the ball's velocity
 	
 	if body.is_in_group("bottom"):
 		return_to_cannon()

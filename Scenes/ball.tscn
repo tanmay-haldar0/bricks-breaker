@@ -3,8 +3,9 @@
 [ext_resource type="Script" path="res://Scripts/ball.gd" id="1_pntxp"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j66hs"]
+friction = 0.8
 rough = true
-bounce = 0.9
+bounce = 1.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_ajool"]
 radius = 12.0
@@ -16,7 +17,7 @@ radius = 12.0
 [node name="ball" type="RigidBody2D" groups=["ball"]]
 collision_layer = 2
 physics_material_override = SubResource("PhysicsMaterial_j66hs")
-gravity_scale = 0.7
+gravity_scale = 0.0
 can_sleep = false
 lock_rotation = true
 contact_monitor = true
